@@ -20,6 +20,7 @@ abstract class Model {
     
     protected function getPdo() {
         $pdo = new PDO("mysql:host=localhost;dbname=service", "service", "_fm*08UOVbkdGeVi");
+        /*$pdo = new PDO("mysql:host=localhost;dbname=u1826900_service", "u1826900_service", "hZ4jS6iF5trZ2a");*/
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     }

@@ -2,9 +2,15 @@
 
 <h1>Добавить тип устройства</h1>
 
-<form method="POST">
+<form method="POST" class="form_with_fields">
 	<?= Form::routeInputs("DeviceType", "insert") ?>
-	Название:<br/>
-	<input type="text" name="name" required value='<?= $_REQUEST['name']?>'><br/><br/>
-	<input type="submit" name="send_form" value="Добавить" />
+	
+	<div class="mb-3">
+		<label class="form-label">Название:</label>
+		<input class="form-control" type="text" name="name" required value='<?= $_REQUEST['name']?>'>
+	</div>
+	<input class="btn btn-success" type="submit" name="send_form" value="Добавить" />
 </form>
+
+</body>
+</html>

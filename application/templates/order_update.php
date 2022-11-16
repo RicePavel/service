@@ -4,40 +4,60 @@
 
 <?= View::errorMessage($error) ?>
 
-<form method="POST">
+<form method="POST" class="form_with_fields">
 	<?= Form::routeInputs("order", "update") ?>
 	
-	Статус:<br/>
-	<select name="status">
-		<?php foreach ($statuses as $key => $value) { ?>
-			<option <?= ($key == $order['status']) ? 'selected' : '' ?> value="<?= $key ?>"><?= $value ?></option>
-		<?php } ?>
-	</select><br/><br/>
+	<div class="mb-3">
+    	<label class="form-label">Статус:</label>
+    	<select class="form-select" name="status">
+    		<?php foreach ($statuses as $key => $value) { ?>
+    			<option <?= ($key == $order['status']) ? 'selected' : '' ?> value="<?= $key ?>"><?= $value ?></option>
+    		<?php } ?>
+    	</select>
+	</div>
 	
-	Клиент:<br/>
-	<select name="client_id">
-		<?php foreach ($clients as $client) { ?>
-			<option <?= ($client['id'] == $order['client_id']) ? 'selected' : '' ?> value="<?= $client['id'] ?>"><?= $client['surname'] . " " . $client['name'] . " " . $client['middlename'] ?></option>
-		<?php } ?>
-	</select><br/><br/>
+	<div class="mb-3">
+    	<label class="form-label">Клиент:</label>
+    	<select class="form-select" name="client_id">
+    		<?php foreach ($clients as $client) { ?>
+    			<option <?= ($client['id'] == $order['client_id']) ? 'selected' : '' ?> value="<?= $client['id'] ?>"><?= $client['surname'] . " " . $client['name'] . " " . $client['middlename'] ?></option>
+    		<?php } ?>
+    	</select>
+	</div>
 	
-	Тип устройства:<br/>
-	<select name="device_type_id">
-		<option value="">--</option>
-		<?php foreach ($deviceTypes as $type) { ?>
-			<option <?= ($type['id'] == $order['device_type_id']) ? 'selected' : '' ?> value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-		<?php } ?>
-	</select><br/><br/>
+	<div class="mb-3">
+    	<label class="form-label">Тип устройства:</label>
+    	<select class="form-select" name="device_type_id">
+    		<option value="">--</option>
+    		<?php foreach ($deviceTypes as $type) { ?>
+    			<option <?= ($type['id'] == $order['device_type_id']) ? 'selected' : '' ?> value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+    		<?php } ?>
+    	</select>
+	</div>
 	
-	Название устройства:<br/>
-	<input type="text" name="device" value='<?= $order['device']?>'><br/><br/>
-	Комментарий:<br/>
-	<textarea name="comment"><?= $order['comment'] ?></textarea><br/><br/>
-	Цена:<br/>
-	<input type="number" name="price" value='<?= $order['price']?>'><br/><br/>
-	Внесенная оплата:<br/>
-	<input type="number" name="payment" value='<?= $order['payment'] ?>'><br/><br/>
+	<div class="mb-3">
+    	<label class="form-label">Название устройства:</label>
+    	<input class="form-control" type="text" name="device" value='<?= $order['device']?>'>
+	</div>
+	
+	<div class="mb-3">
+    	<label class="form-label">Комментарий:</label>
+    	<textarea class="form-control" name="comment"><?= $order['comment'] ?></textarea>
+	</div>
+	
+	<div class="mb-3">
+    	<label class="form-label">Цена:</label>
+    	<input class="form-control" type="number" name="price" value='<?= $order['price']?>'>
+	</div>
+	
+	<div class="mb-3">
+    	<label class="form-label">Внесенная оплата:</label>
+    	<input class="form-control" type="number" name="payment" value='<?= $order['payment'] ?>'>
+	</div>
 	
 	<input type="hidden" name="id" value='<?= $order['id']?>'>
-	<input type="submit" name="send_form" value="Обновить" />
+	<input class="btn btn-success" type="submit" name="send_form" value="Обновить" />
 </form>
+
+</body>
+</html>

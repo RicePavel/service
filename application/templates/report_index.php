@@ -5,3 +5,5 @@
 <div><a href="<?= Link::getUrl("report", "byAdvertSources") ?>">Клиенты, по рекламным источникам</a></div><br/>
 <div><a href="<?= Link::getUrl("report", "byDeviceTypes") ?>">Заказы, по типам устройств</a></div>
 
+</body>
+</html>

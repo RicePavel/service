@@ -8,10 +8,10 @@
 	<input type="date" name="date_start" value='<?= $_REQUEST['date_start'] ?>'> &nbsp;&nbsp;&nbsp;&nbsp;
 	Дата завершения:
 	<input type="date" name="date_end" value='<?= $_REQUEST['date_end'] ?>'> &nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="submit" name="Получить отчет">
+	<input class="btn btn-success" type="submit" name="Получить отчет">
 </form>
 
-<table>
+<table class="table table-bordered table_catalog">
 	<tr>
 		<th>Тип устройства</th>
 		<th>Количество заказов</th>
@@ -20,10 +20,13 @@
 	</tr>
 	<?php foreach ($data as $row) { ?>
 	<tr>
-		<th><?= (empty($row['device_type_name'])) ? '--' : htmlentities($row['device_type_name']) ?></th>
-		<th><?= htmlentities($row['count_orders']) ?></th>
-		<th><?= htmlentities($row['sum_price']) ?></th>
-		<th><?= htmlentities($row['sum_payment']) ?></th>
+		<td><?= (empty($row['device_type_name'])) ? '--' : htmlentities($row['device_type_name']) ?></td>
+		<td><?= htmlentities($row['count_orders']) ?></td>
+		<td><?= htmlentities($row['sum_price']) ?></td>
+		<td><?= htmlentities($row['sum_payment']) ?></td>
 	</tr>
 	<?php } ?>
 </table>
+
+</body>
+</html>

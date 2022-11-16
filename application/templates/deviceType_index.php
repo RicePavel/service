@@ -4,28 +4,27 @@
 
 <form>
 	<?= Form::routeInputs("deviceType", "insert") ?>
-    <input type="submit" value="Добавить" />
+    <input class="btn btn-success" type="submit" value="Добавить" />
 </form>
 
-<table>
+<table class="table table-bordered table_catalog">
 	<tr>
 		<th>Название</th>
-		<th></th>
-		<th></th>
+		<th>Действия</th>
 	</tr>
     <?php foreach ($list as $item) { ?>
     	<tr>
     		<td><?= htmlentities($item["name"]) ?></td>
     		<td>
-    			<form>
+    			<form class="action_form">
     				<?= Form::routeInputs("deviceType", "update") ?>
-    				<input type="submit" value="Изменить"><input type="hidden" name="id" value='<?= $item["id"] ?>' />
+    				<button type="submit" class="btn btn-outline-success"><i class="bi-pencil"></i></button>
+    				<input type="hidden" name="id" value='<?= $item["id"] ?>' />
     			</form>
-    		</td>
-    		<td>
-    			<form>
+    			<form class="action_form">
     				<?= Form::routeInputs("deviceType", "delete") ?>
-    				<input type="submit" value="Удалить"><input type="hidden" name="id" value='<?= $item["id"] ?>' />
+    				<button onclick="return confirm('Вы уверены?');" type="submit" class="btn btn-outline-danger"><i class="bi-x-lg"></i></button>
+    				<input type="hidden" name="id" value='<?= $item["id"] ?>' />
     			</form>
     		</td>
     	</tr>
@@ -33,3 +32,5 @@
 
 </table>
 
+</body>
+</html>

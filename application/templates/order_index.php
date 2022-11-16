@@ -4,10 +4,10 @@
 
 <form>
 	<?= Form::routeInputs("order", "insert") ?>
-    <input type="submit" value="Добавить" />
+    <input class="btn btn-success" type="submit" value="Добавить" />
 </form>
 
-<table>
+<table class="table table-bordered">
 	<tr>
 		<th>Номер</th>
 		<th>Клиент</th>
@@ -17,9 +17,7 @@
 		<th>Цена</th>
 		<th>Внесенная оплата</th>
 		<th>Дата создания</th>
-		<th></th>
-		<th></th>
-		<th></th>
+		<th>Действия</th>
 	</tr>
     <?php foreach ($data as $item) { ?>
     	<tr>
@@ -32,25 +30,27 @@
     		<td><?= htmlentities($item["payment"]) ?></td>
     		<td><?= htmlentities($item["create_date"]) ?></td>
     		<td>
-    			<form>
+    			<form class="action_form">
     				<?= Form::routeInputs("order", "show") ?>
-    				<input type="submit" value="Просмотр"><input type="hidden" name="id" value='<?= $item["id"] ?>' />
+    				<button type="submit" class="btn btn-outline-success"><i class="bi-eye"></i></button>
+    				<input type="hidden" name="id" value='<?= $item["id"] ?>' />
     			</form>
-    		</td>
-    		<td>
-    			<form>
+    			<form class="action_form">
     				<?= Form::routeInputs("order", "update") ?>
-    				<input type="submit" value="Изменить"><input type="hidden" name="id" value='<?= $item["id"] ?>' />
+    				<button type="submit" class="btn btn-outline-success"><i class="bi-pencil"></i></button>
+    				<input type="hidden" name="id" value='<?= $item["id"] ?>' />
     			</form>
-    		</td>
-    		<td>
-    			<form>
+    			<form class="action_form">
     				<?= Form::routeInputs("order", "delete") ?>
-    				<input type="submit" value="Удалить"><input type="hidden" name="id" value='<?= $item["id"] ?>' />
+    				<button type="submit" onclick="return confirm('Вы уверены?');" class="btn btn-outline-danger"><i class="bi-x-lg"></i></button>
+    				<input type="hidden" name="id" value='<?= $item["id"] ?>' />
     			</form>
     		</td>
     	</tr>
     <?php } ?>
 
 </table>
+
+</body>
+</html>
 

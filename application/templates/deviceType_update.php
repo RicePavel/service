@@ -2,12 +2,17 @@
 
 <h1>Изменить тип устройства</h1>
 
-<form method="POST">
+<form method="POST" class="form_with_fields" >
 	<?= Form::routeInputs("DeviceType", "update") ?>
 	
-	Название:<br/>
-	<input type="text" name="name" required value='<?= $item['name']?>'><br/><br/>
+	<div class="mb-3">
+		<label class="form-label">Название:</label>
+		<input class="form-control" type="text" name="name" required value='<?= $item['name']?>'>
+	</div>
 	
 	<input type="hidden" name="id" value='<?= $item['id']?>'>
-	<input type="submit" name="send_form" value="Обновить" />
+	<input class="btn btn-success" type="submit" name="send_form" value="Обновить" />
 </form>
+
+</body>
+</html>
